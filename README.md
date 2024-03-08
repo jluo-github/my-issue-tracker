@@ -78,21 +78,26 @@ npm i @hookform/resolvers
 ### npm
 
 ```
-
-
-```
-
-### npm
-
-```
-
+npm i delay
 
 ```
 
 ### npm
 
 ```
+npm i react-loading-skeleton
 
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+
+```
+
+### npm
+
+```
+npm i react-markdown
+
+npm install -D @tailwindcss/typography
 
 ```
 
