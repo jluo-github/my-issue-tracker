@@ -3,7 +3,7 @@ Please visit
 ### npm
 
 ```
-
+npm i react-icons
 
 ```
 
