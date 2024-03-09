@@ -3,11 +3,25 @@ import { Flex, Text, Button, Table, Link } from "@radix-ui/themes";
 import prisma from "@/prisma/db";
 import delay from "delay";
 import IssueActions from "./IssueActions";
-
 import { IssueStatusBadge, MyLink } from "@/app/components";
+import { Status } from "@prisma/client";
+import { undefined } from "zod";
+interface Props {
+  searchParams: { status: Status };
+}
 
-const IssuesPage = async () => {
-  const issues = await prisma.issue.findMany();
+// issues function:
+const IssuesPage = async ({ searchParams }: Props) => {
+  const statuses = Object.values(Status);
+  const status = statuses.includes(searchParams.status)
+    ? searchParams.status
+    : statuses[0];
+
+
+  const issues = await prisma.issue.findMany({
+    where: { status },
+    orderBy: { createdAt: "desc" },
+  });
 
   // todo remove this delay
   await delay(2000);

@@ -126,6 +126,19 @@ npm install prisma --save-dev
 ### npm
 
 ```
+npm i @tanstack/react-query
+
+```
+### npm 
+
+```
+npm i react-hot-toast
+
+```
+
+### npm 
+
+```
 
 
 ```
