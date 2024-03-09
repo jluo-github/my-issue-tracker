@@ -104,21 +104,22 @@ npm install -D @tailwindcss/typography
 ### npm
 
 ```
-
-
-```
-
-### npm
-
-```
-
+npm i @radix-ui/react-icons
 
 ```
 
 ### npm
 
 ```
+npm install next-auth
 
+```
+
+### npm
+
+```
+npm install @prisma/client @auth/prisma-adapter
+npm install prisma --save-dev
 
 ```
 

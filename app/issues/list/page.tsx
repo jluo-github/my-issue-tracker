@@ -1,19 +1,21 @@
-import { Flex, Text, Button, Table } from "@radix-ui/themes";
-import Link from "next/link";
-import prisma from "@/prisma/db";
-import IssueStatusBadge from "../components/IssueStatusBadge";
-import delay from "delay";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
-import IssueActions from "./issueActions";
+import { Flex, Text, Button, Table, Link } from "@radix-ui/themes";
 
-const LoadingIssuesPage = () => {
-  const issues = [1, 2, 3, 4, 5];
+import prisma from "@/prisma/db";
+import delay from "delay";
+import IssueActions from "./IssueActions";
+
+import { IssueStatusBadge, MyLink } from "@/app/components";
+
+const IssuesPage = async () => {
+  const issues = await prisma.issue.findMany();
+
+  // todo remove this delay
+  await delay(2000);
 
   return (
     <div>
       <IssueActions />
-      
+
       <Table.Root variant='surface'>
         <Table.Header>
           <Table.Row>
@@ -29,20 +31,26 @@ const LoadingIssuesPage = () => {
 
         <Table.Body>
           {issues.map((issue) => (
-            <Table.Row key={issue}>
+            <Table.Row key={issue.id}>
               <Table.Cell>
-                <Skeleton />
+                <MyLink
+                  href={`/issues/${issue.id}`}
+                  // className='text-violet-800 hover:underline'
+                >
+                  {issue.title}
+                </MyLink>
+
                 <div className='block md:hidden'>
-                  <Skeleton />
+                  <IssueStatusBadge status={issue.status} />
                 </div>
               </Table.Cell>
 
               <Table.Cell className='hidden md:table-cell'>
-                <Skeleton />
+                <IssueStatusBadge status={issue.status} />
               </Table.Cell>
 
               <Table.Cell className='hidden md:table-cell'>
-                <Skeleton />
+                {issue.createdAt.toDateString()}
               </Table.Cell>
             </Table.Row>
           ))}
@@ -51,4 +59,8 @@ const LoadingIssuesPage = () => {
     </div>
   );
 };
-export default LoadingIssuesPage;
+
+export const dynamic = "force-dynamic";
+// export const revalidate = 0;
+
+export default IssuesPage;
