@@ -7,12 +7,39 @@ import { FaBug } from "react-icons/fa6";
 import logo from "@/public/bug1.png";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
-import { Box } from "@radix-ui/themes";
+import {
+  Avatar,
+  Box,
+  Container,
+  DropdownMenu,
+  Flex,
+  Text,
+} from "@radix-ui/themes";
+import { Skeleton } from "@/app/components";
 
 const NavBar = () => {
-  const currentPath = usePathname();
+  return (
+    <nav className='border-b mb-5 px-5 h-14 py-3'>
+      <Container>
+        <Flex justify='between' align='center'>
+          <Flex align='center' gap='3'>
+            <Link href='/'>
+              <Image src={logo} alt='logo' width={40} height={40} />
+            </Link>
 
-  const { status, data: session } = useSession();
+            <NavLinks />
+          </Flex>
+
+          <AuthStatus />
+        </Flex>
+      </Container>
+    </nav>
+  );
+};
+
+// nav links
+const NavLinks = () => {
+  const currentPath = usePathname();
 
   const links = [
     { label: "Dashboard", href: "/" },
@@ -20,41 +47,67 @@ const NavBar = () => {
   ];
 
   return (
-    <nav className='flex space-x-6 border-b mb-5 px-5 h-14 items-center'>
-      <Link href='/'>
-        <Image src={logo} alt='logo' width={40} height={40} />
-      </Link>
+    <ul className='flex space-x-6'>
+      {links.map((link) => (
+        <li key={link.label}>
+          <Link
+            // className={` ${
+            //   link.href === currentPath ? "text-gray-900" : "text-gray-500"
+            // } hover:text-gray-800 transition-colors`}
 
-      <ul className='flex space-x-6'>
-        {links.map((link) => (
-          <li key={link.label}>
-            <Link
-              // className={` ${
-              //   link.href === currentPath ? "text-gray-900" : "text-gray-500"
-              // } hover:text-gray-800 transition-colors`}
+            className={classNames({
+              "nav-link": true,
+              "!text-violet-600": link.href === currentPath,
+            })}
+            href={link.href}>
+            {link.label}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+};
 
-              className={classNames({
-                "text-gray-900": link.href === currentPath,
-                "text-gray-500": link.href !== currentPath,
-                "hover:text-gray-800": true,
-                "transition-colors": true,
-              })}
-              href={link.href}>
-              {link.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
+// auth status
+const AuthStatus = () => {
+  const { status, data: session } = useSession();
 
-      <Box>
-        {status === "authenticated" && (
-          <Link href='/api/auth/signout'>Log Out</Link>
-        )}
-        {status === "unauthenticated" && (
-          <Link href='/api/auth/signin'>Log In</Link>
-        )}
-      </Box>
-    </nav>
+  if (status === "loading") return <Skeleton width='3rem' />;
+
+  return (
+    <Box>
+      {status === "authenticated" && (
+        // <Link href='/api/auth/signout'>Log Out</Link>
+        <DropdownMenu.Root>
+          <DropdownMenu.Trigger>
+            <Avatar
+              className='cursor-pointer'
+              size='2'
+              radius='full'
+              src={session.user?.image!}
+              fallback=''
+              referrerPolicy='no-referrer'
+            />
+          </DropdownMenu.Trigger>
+
+          <DropdownMenu.Content sideOffset={5}>
+            <DropdownMenu.Label>
+              <Text size='2'> {session.user?.email}</Text>
+            </DropdownMenu.Label>
+
+            <DropdownMenu.Item>
+              <Link href='/api/auth/signout'>Log Out</Link>
+            </DropdownMenu.Item>
+          </DropdownMenu.Content>
+        </DropdownMenu.Root>
+      )}
+
+      {status === "unauthenticated" && (
+        <Link className='nav-link' href='/api/auth/signin'>
+          Log In
+        </Link>
+      )}
+    </Box>
   );
 };
 export default NavBar;

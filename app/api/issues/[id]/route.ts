@@ -2,6 +2,8 @@ import { issueSchema } from "@/app/validationSchemas";
 import { NextResponse, type NextRequest } from "next/server";
 import prisma from "@/prisma/db";
 import delay from "delay";
+import { getServerSession } from "next-auth";
+import authOptions from "@/app/auth/authOptions";
 
 interface Props {
   params: {
@@ -9,7 +11,16 @@ interface Props {
   };
 }
 
+// update issue
 export async function PATCH(request: NextRequest, { params }: Props) {
+  // authorize user
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+  }
+
+  // validate request body
   const body = await request.json();
   const validation = issueSchema.safeParse(body);
 
@@ -17,6 +28,7 @@ export async function PATCH(request: NextRequest, { params }: Props) {
     return NextResponse.json(validation.error.format(), { status: 400 });
   }
 
+  // update issue
   const issue = await prisma.issue.findUnique({
     where: {
       id: parseInt(params.id),
@@ -38,11 +50,19 @@ export async function PATCH(request: NextRequest, { params }: Props) {
   return NextResponse.json(updatedIssue);
 }
 
+// delete issue
 export async function DELETE(request: NextRequest, { params }: Props) {
+  // authorize user
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+  }
 
   // // todo: remove this delay
   // await delay(1000)
 
+  // delete issue
   const issue = await prisma.issue.findUnique({
     where: {
       id: parseInt(params.id),

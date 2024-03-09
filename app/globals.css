@@ -13,5 +13,11 @@
 }
 
 body {
-  /* color: rgb(var(--foreground-rgb)); */
+
+}
+
+@layer utilities {
+  .nav-link {
+    @apply text-slate-500 hover:text-violet-600 transition-colors font-semibold;
+  }
 }
