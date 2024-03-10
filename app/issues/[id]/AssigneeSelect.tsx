@@ -2,6 +2,7 @@
 
 import { Select } from "@radix-ui/themes";
 import axios from "axios";
+// @ts-ignore
 import type { Issue, User } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
 import { Skeleton } from "@/app/components";
@@ -11,9 +12,10 @@ const AssigneeSelect = ({ issue }: { issue: Issue }) => {
   const { data: users, error, isLoading } = useUsers();
 
   if (isLoading) return <Skeleton />;
+
   if (error) return null;
 
-  const handleAssignIssue = async (userId) => {
+  const handleAssignIssue = async (userId: string) => {
     try {
       await axios.patch(`/api/issues/${issue.id}`, {
         assignedToUserId: userId || null,
@@ -27,10 +29,13 @@ const AssigneeSelect = ({ issue }: { issue: Issue }) => {
     <>
       <Toaster />
       <Select.Root
+        // @ts-ignore
         defaultValue={issue.assignedToUserId || ""}
         onValueChange={handleAssignIssue}>
-        <Select.Trigger placeholder='Assign...' />
-
+        <Select.Trigger
+          // @ts-ignore
+          placeholder='Assign...'
+        />
         <Select.Content>
           <Select.Group>
             <Select.Label>Suggestions</Select.Label>
