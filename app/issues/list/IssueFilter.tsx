@@ -34,7 +34,10 @@ const IssueFilter = () => {
     <Select.Root
       defaultValue={searchParams.get("status") || ""}
       onValueChange={handleChange}>
-      <Select.Trigger placeholder='Filter by...' />
+      <Select.Trigger
+        // @ts-ignore
+        placeholder='Filter by...'
+      />
 
       <Select.Content>
         <Select.Group>
