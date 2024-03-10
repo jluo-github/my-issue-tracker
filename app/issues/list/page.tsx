@@ -8,6 +8,7 @@ import { Status, type Issue } from "@prisma/client";
 
 import Pagination from "@/app/components/Pagination";
 import IssueTable, { columnNames, type IssueQuery } from "./IssueTable";
+import type { Metadata } from "next";
 
 interface Props {
   searchParams: IssueQuery;
@@ -48,7 +49,7 @@ const IssuesPage = async ({ searchParams }: Props) => {
 
   // return:
   return (
-    <div>
+    <Flex direction='column' gap='3'>
       <IssueActions />
 
       <IssueTable searchParams={searchParams} issues={issues} />
@@ -58,11 +59,16 @@ const IssuesPage = async ({ searchParams }: Props) => {
         currentPage={page}
         itemCount={issueCount}
       />
-    </div>
+    </Flex>
   );
 };
 
 export const dynamic = "force-dynamic";
 // export const revalidate = 0;
+
+export const metadata: Metadata = {
+  title: "Issue Tracker-IssueList",
+  description: "Issues list page",
+};
 
 export default IssuesPage;

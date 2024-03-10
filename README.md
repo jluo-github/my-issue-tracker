@@ -31,7 +31,7 @@ npm i zod
 ```
 
 ### npm
-
+[radix-ui](https://www.radix-ui.com/)
 ```
 https://www.radix-ui.com/
 
@@ -137,14 +137,32 @@ npm i react-hot-toast
 ```
 
 ### npm 
-
+[recharts](https://recharts.org/en-US/)
 ```
+https://recharts.org/en-US/
 
+
+npm install recharts
 
 ```
 ### npm 
+[git-filter-repo](https://github.com/newren/git-filter-repo)
+```
+https://github.com/newren/git-filter-repo
+root:
+git-filter-repo.py
+terminal:
+python3 git-filter-repo.py --path .env --invert-paths --force
 
 ```
+
+
+### npm
+```
+
+npx @sentry/wizard@latest -i nextjs
+
+https://9a2bccd9ae185814c7f1f625a3a8f00f@o4506885001117696.ingest.us.sentry.io/4506885005967360
 
 
 ```
