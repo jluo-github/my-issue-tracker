@@ -1,0 +1,31 @@
+id,title,description,status,createdAt,updatedAt,assignedToUserId
+11,"title bug","# heading
+### heading
+
+
+```
+dfkjdslkjf
+```",OPEN,"2024-03-08 11:34:11.662","2024-03-09 12:03:13.842",cltjlnj6e0000149h843vrvmx
+13,dffdg,gfdgfdgffdfd,CLOSED,"2024-03-09 01:23:39.763","2024-03-09 01:23:39.763",NULL
+14,"new bug",new1,OPEN,"2024-03-09 02:22:29.806","2024-03-09 10:29:23.550",NULL
+15,"production1 ","production1 ",OPEN,"2024-03-09 07:10:05.971","2024-03-09 07:10:05.971",NULL
+17,sdfdfgf,gfgfdggfgggggggdfgdsfg,OPEN,"2024-03-09 09:37:18.290","2024-03-09 09:37:18.290",NULL
+18,"Fix login page layout","The login page layout needs to be adjusted for better user experience.",OPEN,"2024-03-06 10:00:00.000","2024-03-06 10:30:00.000",NULL
+19,"Update product pricing","Update the pricing of products according to the latest cost analysis.",CLOSED,"2024-03-06 11:15:00.000","2024-03-06 11:45:00.000",NULL
+20,"Implement search feature","Implement search functionality to allow users to search for products.",IN_PROGRESS,"2024-03-06 12:30:00.000","2024-03-06 13:00:00.000",NULL
+21,"Fix broken links on homepage","Several links on the homepage are broken and need to be fixed.",OPEN,"2024-03-06 14:45:00.000","2024-03-06 15:15:00.000",NULL
+22,"Create user profile page","Develop a user profile page where users can view and edit their information.",IN_PROGRESS,"2024-03-06 16:00:00.000","2024-03-06 16:30:00.000",NULL
+23,"Optimize database queries","Optimize the database queries to improve application performance.",OPEN,"2024-03-06 17:20:00.000","2024-03-06 17:50:00.000",NULL
+24,"Add email notification feature","Implement email notifications for new messages and updates.",OPEN,"2024-03-06 18:10:00.000","2024-03-06 18:40:00.000",NULL
+25,"Upgrade server infrastructure","Upgrade server hardware and software for better scalability.",IN_PROGRESS,"2024-03-06 19:30:00.000","2024-03-06 20:00:00.000",NULL
+26,"Fix layout issues on mobile devices","The website layout is not responsive on mobile devices.",OPEN,"2024-03-06 21:45:00.000","2024-03-06 22:15:00.000",NULL
+27,"Implement user authentication","Develop user authentication system for secure access.",IN_PROGRESS,"2024-03-07 08:00:00.000","2024-03-07 08:30:00.000",NULL
+28,"Create admin dashboard","Develop an admin dashboard for managing users and content.",CLOSED,"2024-03-07 09:15:00.000","2024-03-07 09:45:00.000",NULL
+29,"Improve product search functionality","Enhance the product search feature with advanced filters.",OPEN,"2024-03-07 10:30:00.000","2024-03-10 03:19:18.279",NULL
+30,"Fix checkout process bugs","Several bugs in the checkout process need to be addressed.",IN_PROGRESS,"2024-03-07 12:45:00.000","2024-03-07 13:15:00.000",NULL
+31,"Add payment gateway integration","Integrate payment gateway for online transactions.",CLOSED,"2024-03-07 14:00:00.000","2024-03-10 03:15:38.600",cltjlnj6e0000149h843vrvmx
+32,"Implement file upload feature","Develop a file upload feature for users to upload documents.",OPEN,"2024-03-07 15:20:00.000","2024-03-07 15:50:00.000",NULL
+33,"Optimize website loading speed","Optimize images and scripts to improve website loading time.",IN_PROGRESS,"2024-03-07 16:30:00.000","2024-03-07 17:00:00.000",NULL
+34,"Fix broken contact form","The contact form is not working properly and needs to be fixed.",OPEN,"2024-03-07 17:45:00.000","2024-03-07 18:15:00.000",NULL
+35,"Create product category pages","Develop pages for different product categories.",IN_PROGRESS,"2024-03-07 19:00:00.000","2024-03-07 19:30:00.000",NULL
+36,"Add social media sharing buttons","Include social media sharing buttons on product pages.",OPEN,"2024-03-07 20:20:00.000","2024-03-10 03:15:58.458",cltjlnj6e0000149h843vrvmx
