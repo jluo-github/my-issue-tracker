@@ -6,15 +6,17 @@ import { Flex, Grid } from "@radix-ui/themes";
 import type { Metadata } from "next";
 
 export default async function Home() {
-  const openIssues = await prisma.issue.count({
+  // if (!prisma.issue.count) return null;
+
+  const openIssues = await prisma?.issue.count({
     where: { status: "OPEN" },
   });
 
-  const inProgressIssues = await prisma.issue.count({
+  const inProgressIssues = await prisma?.issue.count({
     where: { status: "IN_PROGRESS" },
   });
 
-  const closedIssues = await prisma.issue.count({
+  const closedIssues = await prisma?.issue.count({
     where: { status: "CLOSED" },
   });
 
@@ -48,4 +50,3 @@ export const metadata: Metadata = {
   title: "Issue Tracker Dashboard",
   description: "Home page",
 };
-

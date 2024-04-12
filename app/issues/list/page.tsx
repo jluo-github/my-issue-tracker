@@ -42,10 +42,11 @@ const IssuesPage = async ({ searchParams }: Props) => {
     take: pageSize,
   });
 
-  const issueCount = await prisma.issue.count({ where });
+  // if (!prisma.issue.count) return null;
+  const issueCount = await prisma?.issue.count();
 
   // todo remove this delay
-  await delay(2000);
+  // await delay(2000);
 
   // return:
   return (
