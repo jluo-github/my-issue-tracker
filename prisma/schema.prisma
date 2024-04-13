@@ -10,7 +10,9 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
+  // url      = env("DATABASE_URL")
+  url="mysql://users_db-35303531e676:My123456@mysql.gb.stackcp.com:53753/users_db-35303531e676"
+
 }
 
 model Issue {
